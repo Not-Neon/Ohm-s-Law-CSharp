@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace mixed_fraction_convertion
+namespace Ohms_Law
 {
     class program
     {
