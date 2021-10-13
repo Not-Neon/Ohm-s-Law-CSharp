@@ -5,11 +5,58 @@ namespace Ohms_Law
 {
     class program
     {
+        static void PD()
+        {
+            Console.WriteLine("\nCalculating Potential Difference...");
+            Console.WriteLine("\nPlease enter the Current (In ampere) >> ");
+            string i_input = Console.ReadLine();
+            double i;
+            Double.TryParse(i_input, out i);
+            Console.Write("Please enter the Resistance (in Ohm) >> ");
+            string r_input = Console.ReadLine();
+            double r;
+            Double.TryParse(r_input, out r);
+            double v = i * r;
+            Console.WriteLine($"\nVoltage = {v} V - Volt");
+        }
+
+        static void Resistance()
+        {
+            Console.WriteLine("\nCalculating Resistance...");
+            Console.Write("\nPlease enter the PD (Voltage across the cell) >> ");
+            string v_input = Console.ReadLine();
+            double v;
+            Double.TryParse(v_input, out v);
+            Console.Write("Please enter the Current (in Ampere) >> ");
+            string i_input = Console.ReadLine();
+            double i;
+            Double.TryParse(i_input, out i);
+            double r = v / i;
+            Console.WriteLine($"\nResistance = {r} Ω - Ohm");
+        }
+        static void Current()
+        {
+            Console.WriteLine("\nCalculating Current...");
+            Console.Write("\nPlease enter the PD (Voltage across the cell) >> ");
+            string v_input = Console.ReadLine();
+            double v;
+            Double.TryParse(v_input, out v);
+            Console.Write("Please enter the Resistance (in Ohm) >> ");
+            string r_input = Console.ReadLine();
+            double r;
+            Double.TryParse(r_input, out r);
+            double i = v / r;
+            Console.WriteLine($"\nCurrent = {i} A - Ampere");
+        }
         static void Main(string[] args)
         {
+            Console.Title = "C# Ohm's Law";
+            Console.ForegroundColor = ConsoleColor.Green;
+
             Console.WriteLine("[1] Calculate Potential Difference (Voltage, Volt)");
             Console.WriteLine("[2] Calculate Resistance (Ohm)");
             Console.WriteLine("[3] Calculate Current (Ampere)");
+            Console.Write(">> ");
 
             string input = Console.ReadLine();
             int input_int;
@@ -17,42 +64,15 @@ namespace Ohms_Law
 
             if (input_int == 1)
             {
-                Console.WriteLine("Calculating Potential Difference...");
-                Console.WriteLine("Please enter the Current (In ampere) and the Resistance (in Ohm) in the respective order below.");
-                string i_input = Console.ReadLine();
-                double i;
-                Double.TryParse(i_input, out i);
-                string r_input = Console.ReadLine();
-                double r;
-                Double.TryParse(r_input, out r);
-                double v = i * r;
-                Console.WriteLine($"Voltage = {v} V - Volt");
+                PD();
             }
             else if (input_int == 2)
             {
-                Console.WriteLine("Calculating Resistance...");
-                Console.WriteLine("Please enter the PD (Voltage across the cell) and the Current (in Ampere) in the respective order below.");
-                string v_input = Console.ReadLine();
-                double v;
-                Double.TryParse(v_input, out v);
-                string i_input = Console.ReadLine();
-                double i;
-                Double.TryParse(i_input, out i);
-                double r = v / i;
-                Console.WriteLine($"Resistance = {r} Ω - Ohm");
+                Resistance();
             }
             else if (input_int == 3)
             {
-                Console.WriteLine("Calculating Current...");
-                Console.WriteLine("Please enter the PD (Voltage across the cell) and the Resistance (in Ohm) in the respective order below.");
-                string v_input = Console.ReadLine();
-                double v;
-                Double.TryParse(v_input, out v);
-                string r_input = Console.ReadLine();
-                double r;
-                Double.TryParse(r_input, out r);
-                double i = v / r;
-                Console.WriteLine($"Current = {i} A - Ampere");
+                Current();
             }
             else
             {
